@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simon Says Game - Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="simonintro.css">
+</head>
+<body class="flex flex-col items-center justify-center retro-grid">
+  <div class="container mx-auto px-4 py-12 text-center">
+    <h1 class="game-title neon-text">SIMON SAYS</h1>
+    
+    <div class="simon-colors">
+      <div class="simon-color"></div>
+      <div class="simon-color"></div>
+      <div class="simon-color"></div>
+      <div class="simon-color"></div>
+    </div>
+    
+    <p class="text-gray-400 mb-8 text-lg">Test your memory with this classic game!</p>
+    
+    <div class="buttons-container">
+      <a href="simonsays.html" class="neon-button neon-button-green">
+        PLAY
+      </a>
+      
+      <a href="javascript:void(0)" class="neon-button neon-button-blue" id="leaderboard-btn">
+        LEADERBOARD
+      </a>
+      
+      <a href="javascript:void(0)" class="neon-button neon-button-red" id="quit-btn">
+        QUIT
+      </a>
+    </div>
+    
+   
+    <div id="leaderboard-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+      <div class="bg-gray-900 p-12 rounded-lg border-2 border-blue-500 shadow-lg max-w-lg w-3/4 lg:w-1/2 mx-4">
+        <h2 class="text-3xl text-blue-400 mb-4">LEADERBOARD</h2>
+        <div class="mb-6">
+          <div class="flex justify-between mb-2 border-b border-blue-800 pb-2">
+            <span class="text-gray-300">PLAYER</span>
+            <span class="text-gray-300">SCORE</span>
+          </div>
+          <div class="flex justify-between mb-1">
+            <span class="text-white">NEO</span>
+            <span class="text-green-400">42</span>
+          </div>
+          <div class="flex justify-between mb-1">
+            <span class="text-white">TRINITY</span>
+            <span class="text-green-400">38</span>
+          </div>
+          <div class="flex justify-between mb-1">
+            <span class="text-white">MORPHEUS</span>
+            <span class="text-green-400">35</span>
+          </div>
+          <div class="flex justify-between mb-1">
+            <span class="text-white">ORACLE</span>
+            <span class="text-green-400">33</span>
+          </div>
+          <div class="flex justify-between mb-1">
+            <span class="text-white">CIPHER</span>
+            <span class="text-green-400">28</span>
+          </div>
+        </div>
+        <button id="close-leaderboard" class="neon-button neon-button-red w-full">CLOSE</button>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="absolute bottom-0 w-full p-4 text-center">
+    <p class="text-sm text-gray-600">&copy; 2025 Simon Says Game</p>
+  </footer>
+  <script src="simonintro.js"></script>
+</body>
+</html>
