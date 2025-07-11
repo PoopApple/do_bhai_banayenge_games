@@ -7,19 +7,41 @@
     body {
       font-family: 'Segoe UI', sans-serif;
       background: url("{{ url_for('static', filename='images/background-img.png') }}") no-repeat center center fixed;
-      background-size: cover;
       margin: 0;
       padding: 40px;
       display: flex;
       justify-content: center;
+      align-items: flex-start;
+    }
+
+    form {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    form button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #3b7dc4;
     }
 
     .leaderboard {
       width: 90%;
       max-width: 600px;
-      background-color: rgba(255, 255, 255, 0.9); /* slight transparency */
+      background-color: #fff;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border: 3px solid #4a90e2;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
 
@@ -29,6 +51,7 @@
       background-color: #4a90e2;
       color: white;
       text-align: center;
+      border-bottom: 2px solid #3b7dc4;
     }
 
     table {
@@ -64,11 +87,25 @@
       color: #4a90e2;
       font-weight: bold;
     }
+
+    .dt {
+      color: #333;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Back Button -->
+  <form action="/">
+    <button type="submit">← Back</button>
+  </form>
+
+  <!-- Leaderboard -->
   <div class="leaderboard">
-    <h2>Leaderboard</h2>
+    <div>
+      <h2>Leaderboard</h2>
+    </div>
+    
     <table>
       <thead>
         <tr>
@@ -78,14 +115,17 @@
         </tr>
       </thead>
       <tbody>
+        {% for entry in scores %}
         <tr>
-          <td class="rank">1</td>
-          <td class="name">Aryan</td>
-          <td class="score">1500</td>
+          <td class="rank">{{ loop.index }}</td>
+          <td class="name">{{ entry.name }}</td>
+          <td class="score">{{ entry.score }}</td>
+          <td class="dt">{{ entry.date_time }}</td>
         </tr>
-        
+        {% endfor %}
       </tbody>
     </table>
   </div>
+
 </body>
 </html>
