@@ -3,7 +3,7 @@ from pymongo.server_api import ServerApi
 import pymongo
 import datetime
 
-uri = "mongodb+srv://Atriays:VRkDtlmnmxyYnQZM@do-bhai-banayenge-games.bmuo0ev.mongodb.net/?retryWrites=true&w=majority&appName=do-bhai-banayenge-games"
+uri = "did a fuck up and commited the key"
 
 
 myclient = MongoClient(uri, server_api=ServerApi('1'))
