@@ -38,4 +38,4 @@ def ins():
 query = {"name": "abc"}
 
 for x in flappy_table.find().sort("score",pymongo.DESCENDING):
-  print(x) 
+  print(x.name)
