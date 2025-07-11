@@ -6,7 +6,7 @@
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: url('https://images.unsplash.com/photo-1511203466129-824e631920d4?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background: url("{{ url_for('static', filename='images/background-img.png') }}") no-repeat center center fixed;
       background-size: cover;
       margin: 0;
       padding: 40px;
@@ -83,21 +83,7 @@
           <td class="name">Aryan</td>
           <td class="score">1500</td>
         </tr>
-        <tr>
-          <td class="rank">2</td>
-          <td class="name">Neha</td>
-          <td class="score">1250</td>
-        </tr>
-        <tr>
-          <td class="rank">3</td>
-          <td class="name">Ravi</td>
-          <td class="score">900</td>
-        </tr>
-        <tr>
-          <td class="rank">4</td>
-          <td class="name">Maya</td>
-          <td class="score">870</td>
-        </tr>
+        
       </tbody>
     </table>
   </div>
