@@ -1,4 +1,4 @@
-let birdSpeed = 3, gravity = 0.5;
+let birdSpeed = 3, gravity = 0.2;
 let birdElement = document.querySelector('.bird');
 let birdImage = document.getElementById('bird-1');
 let pointSound = new Audio('sounds effect/point.mp3');
@@ -102,8 +102,8 @@ function startGame() {
         requestAnimationFrame(applyGravity);
     }
     requestAnimationFrame(applyGravity);
-    let pipeDistance = 0;
-    let pipeGap = 35;
+    let pipeDistance = 30;
+    let pipeGap = 40;
 
     function generatePipes() {
         if (gameStatus !== 'Play') return;
