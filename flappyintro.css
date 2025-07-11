@@ -110,6 +110,19 @@
     .btn.play:active {
       box-shadow: 0 4px 0 #2e7d32;
     }
+
+    .btn.leaderboard {
+      background-color: #4ca3afff;
+      box-shadow: 0 8px 0 #43909aff;
+    }
+    
+    .btn.leaderboard:hover {
+      box-shadow: 0 12px 0 #43909aff;
+    }
+    
+    .btn.leaderboard:active {
+      box-shadow: 0 4px 0 #43909aff;
+    }
     
     .bird {
       position: absolute;
