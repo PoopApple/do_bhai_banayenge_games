@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leaderboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1511203466129-824e631920d4?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .leaderboard {
+      width: 90%;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.9); /* slight transparency */
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .leaderboard h2 {
+      margin: 0;
+      padding: 20px;
+      background-color: #4a90e2;
+      color: white;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #f7f9fc;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .rank {
+      font-weight: bold;
+    }
+
+    .name {
+      color: #333;
+    }
+
+    .score {
+      text-align: right;
+      color: #4a90e2;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="leaderboard">
+    <h2>Leaderboard</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank">1</td>
+          <td class="name">Aryan</td>
+          <td class="score">1500</td>
+        </tr>
+        <tr>
+          <td class="rank">2</td>
+          <td class="name">Neha</td>
+          <td class="score">1250</td>
+        </tr>
+        <tr>
+          <td class="rank">3</td>
+          <td class="name">Ravi</td>
+          <td class="score">900</td>
+        </tr>
+        <tr>
+          <td class="rank">4</td>
+          <td class="name">Maya</td>
+          <td class="score">870</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
