@@ -1,0 +1,219 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Press Start 2P', cursive;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #71c5cf;
+      color: white;
+      animation: fadeIn 1.5s ease-in;
+    }
+    
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: 
+        url('https://cdn.pixabay.com/photo/2017/06/21/21/11/fractals-2428363_1280.jpg'),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 2px,
+          rgba(0, 0, 0, 0.1) 2px,
+          rgba(0, 0, 0, 0.1) 4px
+        );
+      background-size: cover;
+      background-position: center;
+      image-rendering: pixelated;
+      opacity: 0.5;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      max-width: 800px;
+      width: 100%;
+      z-index: 1;
+    }
+    
+    .title {
+      font-size: 4rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      text-shadow: 4px 4px 0px #2d3b46;
+      color: #f8e71c;
+      letter-spacing: 2px;
+    }
+    
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      position: relative;
+      box-shadow: 0 8px 0 #b71c1c;
+      border-radius: 5px;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    
+    .btn:focus {
+      outline: 3px solid white;
+    }
+    
+    .btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 0 #b71c1c;
+    }
+    
+    .btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 4px 0 #b71c1c;
+    }
+    
+    .btn.play {
+      background-color: #4CAF50;
+      box-shadow: 0 8px 0 #2e7d32;
+    }
+    
+    .btn.play:hover {
+      box-shadow: 0 12px 0 #2e7d32;
+    }
+    
+    .btn.play:active {
+      box-shadow: 0 4px 0 #2e7d32;
+    }
+    
+    .bird {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: yellow;
+      border-radius: 50%;
+      animation: flap 0.6s infinite alternate;
+    }
+    
+    .bird::before {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 75%;
+      width: 50%;
+      height: 30%;
+      background-color: orange;
+      border-radius: 50%;
+      transform: rotate(20deg);
+    }
+    
+    .bird::after {
+      content: '';
+      position: absolute;
+      top: 25%;
+      right: 85%;
+      width: 15%;
+      height: 15%;
+      background-color: black;
+      border-radius: 50%;
+    }
+    
+    @keyframes flap {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-20px);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .pixel-corners {
+      clip-path: 
+        polygon(
+          0% 4px, 4px 4px, 4px 0%, calc(100% - 4px) 0%, calc(100% - 4px) 4px, 100% 4px, 
+          100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 
+          4px calc(100% - 4px), 0% calc(100% - 4px)
+        );
+    }
+    
+    .pipes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .pipe {
+      position: absolute;
+      width: 60px;
+      background-color: #74BF2E;
+      border: 4px solid black;
+    }
+    
+    .pipe.top {
+      top: 0;
+      height: 30%;
+    }
+    
+    .pipe.bottom {
+      bottom: 0;
+      height: 35%;
+    }
+    
+    @media (max-width: 768px) {
+      .title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      .buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.6rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .title {
+        font-size: 2rem;
+      }
+      
+      .bird {
+        width: 30px;
+        height: 30px;
+      }
+    }
