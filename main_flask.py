@@ -52,6 +52,7 @@ def index():
 def mainmenu():
     if ("name" not in session):
         session.permanent = True
+    if(request.method == 'POST'):
         session['name'] = request.form['name'] # store form input into session deets
     return render_template('mainmenu.html' )  # pass it to result page
 
@@ -66,14 +67,21 @@ def flappy():
 
 @app.route('/flappygameover', methods = ['POST'])
 def flappygameover():
-    your_score = flappy_table.find({"name":session['name']}).sort("score",pymongo.DESCENDING).limit(1)[0]['score']
+    entry = flappy_table.find_one({"name":session['name']})
+    if entry:
+        your_score = entry['score']
+    else:
+        your_score = -1
     score = int(request.form['hidden_score_val'] )
     sc_row = {"name" : session['name'] , "score" : score, "date_time" : datetime.datetime.now().strftime("%d %b %Y  %I:%M %p")}
     
     flappy_table_history.insert_one(sc_row)
     if(your_score < score):
-        
-        flappy_table.update_one(sc_row)
+        flappy_table.update_one(
+            {"name": session['name']},           # filter: which document to update
+            {"$set": sc_row},      # update: what to change
+            upsert=True                          # optional: insert if not found
+        )
         return render_template('flappygameover.html', score = score,pb=score)
     
     return render_template('flappygameover.html', score = score,pb=your_score)  # pass it to result page
@@ -81,10 +89,12 @@ def flappygameover():
 @app.route('/leaderboard',)
 def leaderboardView():
     lb_scores = flappy_table.find().sort("score",pymongo.DESCENDING)
-    your_score = flappy_table.find({"name":session['name']}).sort("score",pymongo.DESCENDING).limit(1)
-    print(your_score[0])
-    rank = flappy_table.count_documents({'score': {'$gt': your_score[0]["score"]}}) + 1
-    return render_template('leaderboard.html' , scores = lb_scores, your_score=your_score[0],rank=rank)  # show the form
+    your_score = flappy_table.find_one({"name":session['name']})
+    if your_score:
+        rank = flappy_table.count_documents({'score': {'$gt': your_score["score"]}}) + 1
+    else:
+        rank = "-"
+    return render_template('leaderboard.html' , scores = lb_scores, your_score=your_score,rank=rank)  # show the form
 
 if __name__ == '__main__':
     app.run(debug=True)
