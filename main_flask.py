@@ -38,9 +38,6 @@ if db_name in dblist:
   print("The database exists.")
 else:
     print("not exists")
-    
-
-
 
 
 app = Flask(__name__)
