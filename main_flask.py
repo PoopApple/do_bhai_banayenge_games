@@ -7,7 +7,13 @@ import pymongo
 import datetime
 from datetime import timedelta
 
-uri = "did a fuck and now im here changin all the god damned commits"
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+uri = os.getenv("MONGO_URL")
 
 myclient = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -38,7 +44,7 @@ else:
 
 
 app = Flask(__name__)
-app.secret_key = "did a fuck and now im here changin all the god damned commits"
+app.secret_key = os.getenv('COOKIE_SECRET_KEY')
 app.permanent_session_lifetime = timedelta(days=7)
 
 #NOTE bhai isse env file me daaldio
