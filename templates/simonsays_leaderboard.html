@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leaderboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px); 
+      background-size: 50px 50px;
+      margin: 0;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    form {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    form button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #3b7dc4;
+    }
+
+    .leaderboard {
+      width: 90%;
+      max-width: 600px;
+      background-color: #4a91e238;
+      border-radius: 12px;
+      border: 3px solid #4a90e2;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      white-space: normal; /* allows wrapping */
+      word-wrap: break-word; /* wrap long words */
+    }
+
+    .leaderboard table{
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .leaderboard table th, td {
+      padding: 16px;
+      text-align: left;
+      color: white;
+    }
+
+    .leaderboard tr:hover {
+      background-color: #4a91e238;
+    }
+
+    .leaderboard h2 {
+      margin: 0;
+      padding: 20px;
+      background-color: #4a91e265;
+      color: white;
+      text-align: center;
+      border-bottom: 2px solid #3b7dc4;
+    }
+
+    .personal_lb {
+      width: 90%;
+      max-width: 300px;
+      background-color: #e2b3095f;
+      border-radius: 12px;
+      border: 3px solid #e2b309ff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      margin-right: 100px;
+      overflow: visible;
+      white-space: normal; /* allows wrapping */
+      word-wrap: break-word; /* wrap long words */
+    }
+
+    .personal_lb table{
+      border-collapse: collapse;
+    }
+
+    .personal_lb h2 {
+      margin: 0;
+      padding: 20px;
+      background-color: #e2b30986;
+      border: #e2b309ff 4px;
+      color: white;
+      text-align: center;
+      border-bottom: 2px solid #e2b309ff;
+    }
+
+    .personal_lb tr:hover {
+      background-color: #e2b3095f;
+    }
+
+    .personal_lb table {
+      width: 100%;
+      table-layout: fixed;
+      color: white;
+    }
+
+    .personal_lb td {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 200px;
+      color: white;
+    }
+
+    
+    
+
+    .rank {
+      font-weight: bold;
+    }
+
+    .name {
+      color: white;
+    }
+
+    .score {
+      text-align: right;
+      color: #4a90e2;
+      font-weight: bold;
+    }
+
+    .dt {
+      color: white;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- Back Button -->
+  <form action="/mainmenu">
+    <button type="submit">← Back</button>
+  </form>
+<div class="personal_lb">
+    <div>
+      <h2>Your Score</h2>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>Rank</td>
+          <td class="rank">#{{rank}}</td>
+        </tr>
+
+        <tr>
+          <td>Name</td>
+          <td class="name">{{session['name']}}</td>
+        </tr>
+
+        <tr>
+          <td>Personal Best</td>
+          <td class="score" style="color:#e2b309ff ;">{{your_score.score}}</td>
+        </tr>
+
+        <tr>
+          <td>Submitted On</td>
+          <td class="dt">{{your_score.date_time}}</td>
+        </tr>
+
+        
+      </tbody>
+    </table>
+  </div>
+  
+
+
+  <!-- Leaderboard -->
+  <div class="leaderboard">
+    <div>
+      <h2>Leaderboard</h2>
+    </div>
+    
+    
+
+    <table> 
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Score</th>
+          <th>Submitted on</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for entry in scores %}
+        <tr>
+          <td class="rank">#{{ loop.index }}</td>
+          <td class="name">{{ entry.name }}</td>
+          <td class="score">{{ entry.score }}</td>
+          <td class="dt">{{ entry.date_time }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

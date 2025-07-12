@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/simonsays.css') }}"> 
+</head>
+<body>
+
+    <h1 id="title">
+    <span>S</span><span>I</span><span>M</span><span>O</span><span>N</span>
+    <span>&nbsp;</span>
+    <span>S</span><span>A</span><span>Y</span><span>S</span>
+    </h1>
+    <div class="gameoverboxglass">
+
+        <h2 id="gameover">Game Over</h2>
+        <br>
+        <span class="gover">Score: </span>
+        <span class="gover" style="color: green; text-shadow: 0 0 2px #3CFF3C, 0 0 4px #00FF00, 0 0 6px #009900; ">{{score}}</span>
+        <br>
+        <span class="gover">Personal Best: </span>
+
+        <span class="gover" style = "color: yellow; text-shadow: 0 0 2px #FFFF99,  0 0 4px #FFEB3B,0 0 6px #FFD700; ">{{pb}}</span>
+        
+        <div class="buttons">
+                <form action="/simonsays">
+                    <button id="play-button" class="menu_btn play pixel-corners" type="submit">Play Again</button>
+                </form>
+
+                <form action="/ss_leaderboard">
+                    <button id="leaderboard-button" class="menu_btn leaderboard pixel-corners" type="submit">Leaderboard</button>
+                </form>
+                
+                <form action="/mainmenu">
+                    <button id="quit-button" class="menu_btn pixel-corners" type="submit">Quit</button>
+                </form>
+        </div>
+    
+    
+    </div>
+
+    <script src="{{ url_for('static', filename='js/simonsays.js') }}"></script>
+    
+</body>
+</html>

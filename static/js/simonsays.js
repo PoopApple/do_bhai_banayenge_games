@@ -44,12 +44,15 @@ function checkbts(idx) {
       }, 500);
     }
   } else {
-    console.log(" unsuccessful");
+    console.log("end");
+    document.getElementById("hidden_score_val").value = document.querySelector("#score").innerText;
+    document.getElementById("gameoverform").submit();
     h2.innerText = "Game Over. Press any key to Restart";
     body.style.backgroundColor = "#FF5722";
     setTimeout(() => {
       body.style.backgroundColor = "#121212";
     }, 300);
+    
     resetGame();
   }
 }
@@ -61,9 +64,8 @@ function nextSequence() {
   let coloridx = Math.floor(Math.random() * 4); 
   let color = box[coloridx];
   let btn = document.getElementById(color);
-
-  flashup(btn); 
   gamecollection(btn);
+  flashall();
   
 } 
 
@@ -72,12 +74,26 @@ function gamecollection(b) {
   console.log("Game:", gamesq);
 }
 
-function flashup(bt) {
-  bt.classList.add("flash");
+
+function flashall(){
+  for (let i = 0; i < gamesq.length; i++) {
+    let btn = document.getElementById(gamesq[i]);
+    flashup(btn,300,i);
+  }
+}
+
+function flashup(bt, delay = 400,i=0) {
+
+  setTimeout(()=>{
+    bt.classList.add("flash");
+  },delay*i + delay*0.06)  // to add a delay between the same colour blinking on and off 6% of the delay for 
+                          // for ex 20 addiotion delay for 300
+
+  
   setTimeout(() => {
     bt.classList.remove("flash");
-  }, 300);
-} // done 
+  }, delay*(i+1));
+} 
 
 function userflash(btn) {
   btn.classList.add("flash");

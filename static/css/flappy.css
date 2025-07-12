@@ -112,68 +112,68 @@
 }
 
 .buttons {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
     
-    .btn {
-      padding: 1rem 2rem;
-      font-size: 1.5rem;
-      font-family: 'Press Start 2P', cursive;
-      background-color: #f44336;
-      color: white;
-      border: none;
-      cursor: pointer;
-      text-transform: uppercase;
-      position: relative;
-      box-shadow: 0 8px 0 #b71c1c;
-      border-radius: 5px;
-      transition: all 0.2s ease;
-      outline: none;
-    }
-    
-    .btn:focus {
-      outline: 3px solid white;
-    }
-    
-    .btn:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 12px 0 #b71c1c;
-    }
-    
-    .btn:active {
-      transform: translateY(4px);
-      box-shadow: 0 4px 0 #b71c1c;
-    }
-    
-    .btn.play {
-      background-color: #4CAF50;
-      box-shadow: 0 8px 0 #2e7d32;
-    }
-    
-    .btn.play:hover {
-      box-shadow: 0 12px 0 #2e7d32;
-    }
-    
-    .btn.play:active {
-      box-shadow: 0 4px 0 #2e7d32;
-    }
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    position: relative;
+    box-shadow: 0 8px 0 #b71c1c;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    outline: none;
+  }
 
-    .btn.leaderboard {
-      background-color: #4ca3afff;
-      box-shadow: 0 8px 0 #43909aff;
-    }
-    
-    .btn.leaderboard:hover {
-      box-shadow: 0 12px 0 #43909aff;
-    }
-    
-    .btn.leaderboard:active {
-      box-shadow: 0 4px 0 #43909aff;
-    }
+  .btn:focus {
+    outline: 3px solid white;
+  }
+
+  .btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 0 #b71c1c;
+  }
+
+  .btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #b71c1c;
+  }
+
+  .btn.play {
+    background-color: #4CAF50;
+    box-shadow: 0 8px 0 #2e7d32;
+  }
+
+  .btn.play:hover {
+    box-shadow: 0 12px 0 #2e7d32;
+  }
+
+  .btn.play:active {
+    box-shadow: 0 4px 0 #2e7d32;
+  }
+
+  .btn.leaderboard {
+    background-color: #4ca3afff;
+    box-shadow: 0 8px 0 #43909aff;
+  }
+
+  .btn.leaderboard:hover {
+    box-shadow: 0 12px 0 #43909aff;
+  }
+
+  .btn.leaderboard:active {
+    box-shadow: 0 4px 0 #43909aff;
+  }
 
 
 @keyframes fadeInScale {
