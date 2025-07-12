@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic Tac Toe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 5px;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      cursor: pointer;
+    }
+    .cell.disabled {
+      pointer-events: none;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+  <div class="board" id="board"></div>
+  <h2 id="status"></h2>
+
+  <script>
+    const boardElement = document.getElementById("board");
+    const statusElement = document.getElementById("status");
+
+    let board = Array(9).fill(null);
+    const human = "X";
+    const ai = "O";
+    let gameOver = false;
+
+    // Create 9 cells
+    board.forEach((_, index) => {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.dataset.index = index;
+      boardElement.appendChild(cell);
+    });
+
+    boardElement.addEventListener("click", (e) => {
+      const index = e.target.dataset.index;
+      if (board[index] || gameOver) return;
+
+      makeMove(index, human);
+
+      if (!gameOver) {
+        const bestMove = getBestMove(board);
+        makeMove(bestMove, ai);
+      }
+    });
+
+    function makeMove(index, player) {
+      board[index] = player;
+      boardElement.children[index].textContent = player;
+      boardElement.children[index].classList.add("disabled");
+
+      const winner = checkWinner(board);
+      if (winner || board.every(cell => cell)) {
+        gameOver = true;
+        statusElement.textContent = winner ? `${winner} Wins!` : "It's a Draw!";
+      }
+    }
+
+    function checkWinner(b) {
+      const winPatterns = [
+        [0,1,2], [3,4,5], [6,7,8], // rows
+        [0,3,6], [1,4,7], [2,5,8], // cols
+        [0,4,8], [2,4,6]           // diagonals
+      ];
+      for (let [a, b_, c] of winPatterns) {
+        if (b[a] && b[a] === b[b_] && b[a] === b[c]) return b[a];
+      }
+      return null;
+    }
+
+    function getBestMove(newBoard) {
+      let bestScore = -Infinity;
+      let move;
+
+      newBoard.forEach((cell, index) => {
+        if (!cell) {
+          newBoard[index] = ai;
+          let score = minimax(newBoard, 0, false);
+          newBoard[index] = null;
+          if (score > bestScore) {
+            bestScore = score;
+            move = index;
+          }
+        }
+      });
+
+      return move;
+    }
+
+    function minimax(board, depth, isMaximizing) {
+      const winner = checkWinner(board);
+      if (winner === ai) return 10 - depth;
+      if (winner === human) return depth - 10;
+      if (board.every(cell => cell)) return 0;
+
+      if (isMaximizing) {
+        let best = -Infinity;
+        board.forEach((cell, index) => {
+          if (!cell) {
+            board[index] = ai;
+            best = Math.max(best, minimax(board, depth + 1, false));
+            board[index] = null;
+          }
+        });
+        return best;
+      } else {
+        let best = Infinity;
+        board.forEach((cell, index) => {
+          if (!cell) {
+            board[index] = human;
+            best = Math.min(best, minimax(board, depth + 1, true));
+            board[index] = null;
+          }
+        });
+        return best;
+      }
+    }
+  </script>
+</body>
+</html>
