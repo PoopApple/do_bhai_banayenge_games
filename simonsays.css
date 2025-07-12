@@ -1,8 +1,14 @@
 body {
   text-align: center;
-  background-color: #011F3F;
+  background-color:  #121212;
   font-family: 'Arial', sans-serif;
   color: white;
+
+  
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 #title span {
@@ -10,7 +16,7 @@ body {
   font-size: 3.5rem;
   font-weight: bold;
   animation: juggle 1s ease-in-out infinite;
-  color: black; /* neon cyan */
+  color: black; 
   text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 15px #00CED1;
 }
 
