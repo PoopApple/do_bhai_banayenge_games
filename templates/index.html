@@ -1,21 +1,282 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toli Toli Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style id="app-style">
+        :root {
+            --neon-green: #39ff14;
+            --neon-pink: #ff00ff;
+            --neon-blue: #00f7ff;
+            --bg-dark: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scanlines effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                transparent 50%,
+                rgba(0, 0, 0, 0.1) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        /* CRT flicker animation */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+            animation: flicker 0.15s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.05; }
+            100% { opacity: 0; }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(20, 20, 20, 0.8);
+            border: 2px solid var(--neon-blue);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
+            z-index: 1;
+            animation: pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px rgba(0, 247, 255, 0.5); }
+            100% { box-shadow: 0 0 25px rgba(0, 247, 255, 0.8); }
+        }
+
+        h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .greeting {
+            color: var(--neon-pink);
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        form {
+            margin: 2rem 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(30, 30, 30, 0.8);
+            border: 2px solid var(--neon-blue);
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(0.7rem, 3vw, 1rem);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 12px 24px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(0.7rem, 3vw, 1rem);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: rgba(57, 255, 20, 0.1);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.8);
+            transform: translateY(-2px);
+        }
+
+        button:active:not(:disabled) {
+            transform: translateY(1px);
+        }
+
+        h2 {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--neon-blue);
+            margin-top: 2rem;
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                margin-bottom: 1.5rem;
+            }
+
+            .greeting {
+                margin-bottom: 2rem;
+            }
+
+            form {
+                margin: 1.5rem 0;
+            }
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--neon-green);
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .button-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello from blha blah!</h1>
-
-    <h1>Enter Your Name</h1>
-    <form action="/mainmenu" method="POST">
-        <input type="text" name="name" placeholder="Your name here" {%if name%} 
-            value = {{name}}{%endif%} required>
+    <div class="container">
+        <h1 class="greeting">Hey there, player!</h1>
+        <h1>Enter Your Name</h1>
         
-        <button type="submit">Go To Game Menu</button>
-    </form>
+        <form id="nameForm">
+            <input type="text" name="name" id="playerName" placeholder="Your name here" required>
+            <button type="submit" id="submitBtn">
+                <span class="button-content">
+                    Go to Game Menu
+                    <span class="loading" id="loading"></span>
+                </span>
+            </button>
+        </form>
+        
+        <h2>More about you</h2>
+    </div>
 
-    <h2>aur cheeze apne baare mex</h2>
-    
+    <script id="app-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const nameForm = document.getElementById('nameForm');
+            const playerNameInput = document.getElementById('playerName');
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            
+            // Check if name exists in localStorage and pre-fill
+            const savedName = localStorage.getItem('playerName');
+            if (savedName) {
+                playerNameInput.value = savedName;
+            }
+            
+            // Enable/disable button based on input
+            const validateInput = () => {
+                if (playerNameInput.value.trim() === '') {
+                    submitBtn.disabled = true;
+                } else {
+                    submitBtn.disabled = false;
+                }
+            };
+            
+            // Initial validation
+            validateInput();
+            
+            // Listen for input changes
+            playerNameInput.addEventListener('input', validateInput);
+            
+            // Form submission
+            nameForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const playerName = playerNameInput.value.trim();
+                
+                if (playerName) {
+                    // Show loading state
+                    loading.style.display = 'inline-block';
+                    submitBtn.disabled = true;
+                    
+                    // Save to localStorage
+                    localStorage.setItem('playerName', playerName);
+                    
+                    // Simulate API request
+                    setTimeout(() => {
+                        // Redirect to main menu
+                        window.location.href = '/mainmenu';
+                    }, 800);
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
