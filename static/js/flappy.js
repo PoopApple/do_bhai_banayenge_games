@@ -1,4 +1,4 @@
-let birdSpeed = 3, gravity = 0.5;
+let birdSpeed = 3, gravity = 0.3;
 let birdElement = document.querySelector('.bird');
 let birdImage = document.getElementById('bird-1');
 let pointSound = new Audio('sounds effect/point.mp3');

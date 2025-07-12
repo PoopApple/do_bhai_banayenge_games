@@ -41,7 +41,7 @@
   <script>
     const boardElement = document.getElementById("board");
     const statusElement = document.getElementById("status");
-
+    let maxDepth = 1;
     let board = Array(9).fill(null);
     const human = "X";
     const ai = "O";
@@ -62,7 +62,7 @@
       makeMove(index, human);
 
       if (!gameOver) {
-        const bestMove = getBestMove(board);
+        const bestMove = getBestMove(board,maxDepth);
         makeMove(bestMove, ai);
       }
     });
@@ -91,14 +91,14 @@
       return null;
     }
 
-    function getBestMove(newBoard) {
+    function getBestMove(newBoard,maxDepth) {
       let bestScore = -Infinity;
       let move;
 
       newBoard.forEach((cell, index) => {
         if (!cell) {
           newBoard[index] = ai;
-          let score = minimax(newBoard, 0, false);
+          let score = minimax(newBoard, 0, false,maxDepth);
           newBoard[index] = null;
           if (score > bestScore) {
             bestScore = score;
@@ -110,14 +110,15 @@
       return move;
     }
 
-    function minimax(board, depth, isMaximizing) {
+    function minimax(board, depth, isMaximizing,maxDepth) {
       const winner = checkWinner(board);
       if (winner === ai) return 10 - depth;
       if (winner === human) return depth - 10;
+      if (depth==maxDepth) return 0;
       if (board.every(cell => cell)) return 0;
 
       if (isMaximizing) {
-        let best = -Infinity;
+        let best = -Infinity; 
         board.forEach((cell, index) => {
           if (!cell) {
             board[index] = ai;

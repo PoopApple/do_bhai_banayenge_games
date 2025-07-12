@@ -13,8 +13,12 @@
   <span>&nbsp;</span>
   <span>S</span><span>A</span><span>Y</span><span>S</span>
 </h1>
-  <h2 id="level-title">Press any Key to Start</h1>
- <h3 id="score">Score: 0</h3>
+  <h2 id="level-title">Press any Key to Start</h2>
+    <div class = "score_container">
+      <h3>Score: </h3>
+      <h3 id="score"> 0</h3>
+    </div>
+  
    
   <div class="container">
     <div class="btn green" id="green"></div>
@@ -23,8 +27,12 @@
     <div class="btn blue" id="blue"></div>
   </div>
 
+  <form action="/simongameover" method="POST" id = "gameoverform">
+        <input type="hidden" id = "hidden_score_val" value = '0' name ='hidden_score_val'  required>      
+  </form>
 
-    <script src="{{ url_for('static', filename='js/simonsays.js') }}"></script>
+  
+  <script src="{{ url_for('static', filename='js/simonsays.js') }}"></script>
     
 </body>
 </html>
