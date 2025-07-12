@@ -1,3 +1,53 @@
-<form action = "/getname">
-    <button type = "submit">Go</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Retro Gaming</title>
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" >
+  <style>
+    body{
+       background-image: url("{{ url_for('static', filename='images/242348.webp') }}");
+    }
+  </style>
+</head>
+<body data-scroll-container >
+
+  <nav>
+    <h1 class="logo">PRISET</h1>
+    <ul>
+      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+      <li><a href="https://github.com" target="_blank">GitHub</a></li>
+      <li><a href="#about">About Us</a></li>
+    </ul>
+  </nav>
+
+
+  <section class="hero" data-scroll-section>
+    <div class="content">
+      <h2 data-scroll data-scroll-speed="2">WELCOME TO</h2>
+      <h1 data-scroll data-scroll-speed="4">PRITSET</h1>
+      <p data-scroll data-scroll-speed="-2">Where Pixels Come to Life!</p>
+      <button onclick="location.href='mainmenu.html'" data-scroll data-scroll-speed="3">Visit Page</button>
+    </div>
+  </section>
+
+  <section class="about" id="about" data-scroll-section>
+    <h2 data-scroll data-scroll-speed="1">About Us</h2>
+    <p data-scroll data-scroll-speed="-1">
+     Pritset is your portal to the past. Dive into pixel-perfect gaming from the golden era of arcades and 8-bit adventures.
+    </p>
+  </section>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
