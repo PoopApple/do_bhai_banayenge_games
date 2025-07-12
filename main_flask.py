@@ -7,7 +7,13 @@ import pymongo
 import datetime
 from datetime import timedelta
 
-uri = "mongodb+srv://Atriays:VRkDtlmnmxyYnQZM@do-bhai-banayenge-games.bmuo0ev.mongodb.net/?retryWrites=true&w=majority&appName=do-bhai-banayenge-games"
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+uri = os.getenv("MONGO_URL")
 
 myclient = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -38,7 +44,7 @@ else:
 
 
 app = Flask(__name__)
-app.secret_key = 'pritish_aur_aryan_ka_secret_code_sex_sex_sex'
+app.secret_key = os.getenv('COOKIE_SECRET_KEY')
 app.permanent_session_lifetime = timedelta(days=7)
 
 #NOTE bhai isse env file me daaldio
