@@ -213,9 +213,10 @@
     <div class="container">
         <h1 class="greeting">Hey there, player!</h1>
         <h1>Enter Your Name</h1>
-        
-        <form id="nameForm">
-            <input type="text" name="name" id="playerName" placeholder="Your name here" required>
+
+        <form id="nameForm" action="/mainmenu"  method="POST" >
+            <input type="text" name="name" id="playerName" placeholder="Your name here" 
+                {%if name%} value = {{name}}{%endif%}   required>
             <button type="submit" id="submitBtn">
                 <span class="button-content">
                     Go to Game Menu
@@ -227,56 +228,5 @@
         <h2>More about you</h2>
     </div>
 
-    <script id="app-script">
-        document.addEventListener('DOMContentLoaded', function() {
-            const nameForm = document.getElementById('nameForm');
-            const playerNameInput = document.getElementById('playerName');
-            const submitBtn = document.getElementById('submitBtn');
-            const loading = document.getElementById('loading');
-            
-            // Check if name exists in localStorage and pre-fill
-            const savedName = localStorage.getItem('playerName');
-            if (savedName) {
-                playerNameInput.value = savedName;
-            }
-            
-            // Enable/disable button based on input
-            const validateInput = () => {
-                if (playerNameInput.value.trim() === '') {
-                    submitBtn.disabled = true;
-                } else {
-                    submitBtn.disabled = false;
-                }
-            };
-            
-            // Initial validation
-            validateInput();
-            
-            // Listen for input changes
-            playerNameInput.addEventListener('input', validateInput);
-            
-            // Form submission
-            nameForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const playerName = playerNameInput.value.trim();
-                
-                if (playerName) {
-                    // Show loading state
-                    loading.style.display = 'inline-block';
-                    submitBtn.disabled = true;
-                    
-                    // Save to localStorage
-                    localStorage.setItem('playerName', playerName);
-                    
-                    // Simulate API request
-                    setTimeout(() => {
-                        // Redirect to main menu
-                        window.location.href = '/mainmenu';
-                    }, 800);
-                }
-            });
-        });
-    </script>
 </body>
 </html>
