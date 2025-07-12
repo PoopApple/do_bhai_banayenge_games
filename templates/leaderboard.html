@@ -43,6 +43,8 @@
       border: 3px solid #4a90e2;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+      white-space: normal; /* allows wrapping */
+      word-wrap: break-word; /* wrap long words */
     }
 
     .leaderboard h2 {
@@ -61,9 +63,10 @@
       border-radius: 12px;
       border: 3px solid #e2b309ff;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
       margin-right: 100px;
-      
+      overflow: visible;
+      white-space: normal; /* allows wrapping */
+      word-wrap: break-word; /* wrap long words */
     }
 
     .personal_lb h2 {
@@ -74,6 +77,19 @@
       text-align: center;
       border-bottom: 2px solid #e2b309ff;
     }
+
+    .personal_lb table {
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    .personal_lb td {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      max-width: 100px;
+    }
+
 
     table {
       width: 100%;
