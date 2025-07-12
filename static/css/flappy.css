@@ -1,0 +1,188 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.pixel-corners {
+      clip-path: 
+        polygon(
+          0% 4px, 4px 4px, 4px 0%, calc(100% - 4px) 0%, calc(100% - 4px) 4px, 100% 4px, 
+          100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 
+          4px calc(100% - 4px), 0% calc(100% - 4px)
+        );
+    }
+.game_over_text {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      text-shadow: 4px 4px 0px #2d3b46;
+      color: #f81c1cff;
+      letter-spacing: 2px;
+    }
+
+
+.background {
+	height: 100vh;
+	width: 100vw;
+	background: url('../images/bg2.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.bird {
+	height: 100px;
+	width: 130px;
+	position: fixed;
+	top: 40vh;
+	left: 30vw;
+	z-index: 100;
+}
+.pipe_sprite {
+	position: fixed;
+	top: 40vh;
+	left: 100vw;
+	height: 70vh;
+	width: 6vw;
+	background: radial-gradient(lightgreen 50%, green);
+	border: 5px solid black;
+}
+.message {
+	position: absolute;
+	z-index: 10;
+	color: black;
+	top: 30%;
+	left: 50%;
+	font-size: 4em;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	animation: fadeInScale 0.5s ease-in-out;
+}
+.messageStyle {
+	 background: rgba(63, 176, 217, 0.05); 
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5%;
+    backdrop-filter: blur(5px);
+    text-align: center; 
+}
+.score {
+	position: fixed;
+	z-index: 10;
+	height: 10vh;
+	font-size: 10vh;
+	font-weight: 100;
+	color: white;
+	-webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+	top: 0;
+	left: 0;
+	margin: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.score_val {
+	color: rgb(41, 200, 60);
+	font-weight: bold;
+}
+
+
+.gover{
+	margin:2px ;
+	font-size: 4vh;
+}
+
+@media only screen and (max-width: 1080px) {
+    .message {
+		font-size: 50px;
+		top: 50%;
+		white-space: nowrap;
+	}
+	.score {
+		font-size: 8vh;
+	}
+	.bird {
+		width: 120px;
+		height: 90px;
+	}
+	.pipe_sprite {
+		width: 14vw;
+	}
+}
+
+.buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      position: relative;
+      box-shadow: 0 8px 0 #b71c1c;
+      border-radius: 5px;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    
+    .btn:focus {
+      outline: 3px solid white;
+    }
+    
+    .btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 0 #b71c1c;
+    }
+    
+    .btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 4px 0 #b71c1c;
+    }
+    
+    .btn.play {
+      background-color: #4CAF50;
+      box-shadow: 0 8px 0 #2e7d32;
+    }
+    
+    .btn.play:hover {
+      box-shadow: 0 12px 0 #2e7d32;
+    }
+    
+    .btn.play:active {
+      box-shadow: 0 4px 0 #2e7d32;
+    }
+
+    .btn.leaderboard {
+      background-color: #4ca3afff;
+      box-shadow: 0 8px 0 #43909aff;
+    }
+    
+    .btn.leaderboard:hover {
+      box-shadow: 0 12px 0 #43909aff;
+    }
+    
+    .btn.leaderboard:active {
+      box-shadow: 0 4px 0 #43909aff;
+    }
+
+
+@keyframes fadeInScale {
+	0% {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.8);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
