@@ -44,9 +44,15 @@ app.permanent_session_lifetime = timedelta(days=7)
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+    
+
+
+@app.route('/getname')
+def getname():
     if('name' in session):
-        return render_template('index.html',name = session['name'])
-    return render_template('index.html')  # show the form
+        return render_template('getname.html',name = session['name'])
+    return render_template('getname.html')  # show the form
     
 @app.route('/mainmenu', methods = ['POST','GET'])
 def mainmenu():
@@ -94,7 +100,7 @@ def leaderboardView():
         rank = flappy_table.count_documents({'score': {'$gt': your_score["score"]}}) + 1
     else:
         rank = "-"
-    return render_template('leaderboard.html' , scores = lb_scores, your_score=your_score,rank=rank)  # show the form
+    return render_template('flappy_leaderboard.html' , scores = lb_scores, your_score=your_score,rank=rank)  # show the form
 
 if __name__ == '__main__':
     app.run(debug=True)
