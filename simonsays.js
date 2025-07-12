@@ -48,7 +48,7 @@ function checkbts(idx) {
     h2.innerText = "Game Over. Press any key to Restart";
     body.style.backgroundColor = "#FF5722";
     setTimeout(() => {
-      body.style.backgroundColor = "#011F3F";
+      body.style.backgroundColor = "#121212";
     }, 300);
     resetGame();
   }

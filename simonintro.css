@@ -144,7 +144,7 @@
       margin-top: 20px;
     }
     
-    /* Responsive design */
+  
     @media (max-width: 768px) {
       .game-title {
         font-size: 3rem;
