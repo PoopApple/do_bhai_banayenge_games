@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //to process image in js
+        const imagePath = "{{ url_for('static', filename='images/fapy.png') }}";
+    </script>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+    
+    <title>Flappy Bird Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flappy.css') }}">
+</head>
+<body>
+    <div class="background">
+        <div class = "message messageStyle">
+            <h2 class="game_over_text" style="color: red;">GAME OVER</h2>
+            <div class="">
+                <span class="score_title gover">Score</span>
+                <span class="score_val gover">{{score}}</span>
+                <br>
+                <span class="score_title gover">Personal Best</span>
+                <span class="score_val gover">{{pb}}</span>
+            </div>
+            <div class="buttons">
+                <form action="/flappy">
+                    <button id="play-button" class="btn play pixel-corners" type="submit">Play Again</button>
+                </form>
+
+                <form action="/leaderboard">
+                    <button id="leaderboard-button" class="btn leaderboard pixel-corners" type="submit">Leaderboard</button>
+                </form>
+                
+                <form action="/mainmenu">
+                    <button id="quit-button" class="btn pixel-corners" type="submit">Quit</button>
+                </form>
+            </div>
+    </div>
+    
+
+    <form action="/mainmenu" method="POST">
+        <input type="hidden" id = "hidden_score_val" required>
+        
+        <button type="submit">
+    </form>
+
+    
+</body>
+</html>
+    
