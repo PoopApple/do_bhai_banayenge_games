@@ -2,7 +2,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Play button - navigate to flappy.html
       document.getElementById('play-button').addEventListener('click', function() {
-        window.location.href = 'flappy.html';
+        window.location.href = '../flappy.html';
       });
       
       // Quit button - close the window/tab
