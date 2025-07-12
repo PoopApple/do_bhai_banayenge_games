@@ -102,6 +102,16 @@ def leaderboardView():
         rank = "-"
     return render_template('flappy_leaderboard.html' , scores = lb_scores, your_score=your_score,rank=rank)  # show the form
 
+
+@app.route('/simonsays')
+def simonsays():
+    return render_template('simonsays.html')
+
+@app.route('/simonintro')
+def simonintro():
+    return render_template('simonintro.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
