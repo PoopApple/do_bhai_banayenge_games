@@ -6,7 +6,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="simonintro.css">
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/simonintro.css') }}"> 
 </head>
 <body class="flex flex-col items-center justify-center retro-grid">
   <div class="container mx-auto px-4 py-12 text-center">
@@ -22,7 +22,7 @@
     <p class="text-gray-400 mb-8 text-lg">Test your memory with this classic game!</p>
     
     <div class="buttons-container">
-      <a href="simonsays.html" class="neon-button neon-button-green">
+      <a href="/simonsays" class="neon-button neon-button-green">
         PLAY
       </a>
       
@@ -73,6 +73,6 @@
   <footer class="absolute bottom-0 w-full p-4 text-center">
     <p class="text-sm text-gray-600">&copy; 2025 Simon Says Game</p>
   </footer>
-  <script src="simonintro.js"></script>
+  <script src="{{ url_for('static', filename='js/simonintro.js') }}"></script>
 </body>
 </html>
