@@ -29,6 +29,16 @@
             margin: 20px 0;
         }
 
+        .btns{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .btns button{
+            margin: 1.5vw;
+        }
+
         button {
             font-family: 'Press Start 2P', cursive;
             font-size: 1.2em;
@@ -62,65 +72,84 @@
             pointer-events: none;
             z-index: 10;
         }
+
+
+        .btn-imgs-container{
+            
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .btn-imgs-container img{
+            width: 20vw;
+            height: 20vw;
+            margin: 8vw;
+            margin-top: 7vh;
+            margin-bottom: 2.5vh;
+            object-fit: cover;
+            transition: transform 0.2s;
+            border: 4px solid #ffffff;
+        }
+
+        .btn-imgs-container img:hover{
+            transform: scale(1.2);
+        }
+
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    
 </head>
 <body>
     <div class="retro-overlay"></div>
     <h1>Welcome {{session['name']}}</h1>
-    <form action="/flappyintro">
-        <button type="submit" class="play-button">Play Flappy Bird</button>
-    </form>
-    <form action="/leaderboard">
-        <button type="submit" class="leaderboard-button">Leaderboard</button>
-    </form>
-    <form action="/simonsays">
-        <button type="submit" class="simonsays-button">Simon Says</button>
-    </form>
+
+    <div class = "btn-imgs-container">
+        <a href = "/flappyintro">
+            <img id = "fb_img" src = "{{ url_for('static', filename='images/fb_game_icon3.png') }}">
+            <p>Flappy Bird</p>
+        </a>
+        <a href = "/simonintro">
+            <img id = "ss_img" src = "{{ url_for('static', filename='images/simonsays_still.png') }}">
+            <p>Simon Says</p>
+        </a>
+    </div>
 
     <script>
-        
-        gsap.from("h1", {
-            duration: 1.5,
-            y: -100,
-            opacity: 0,
-            ease: "bounce.out",
-            delay: 0.5
+        const img = document.getElementById("fb_img");
+
+        img.addEventListener("mouseenter", () => {
+        img.src = "{{ url_for('static', filename='images/fb_icon_gif.gif') }}"+ "?t=" + new Date().getTime(); // image to show on hover
         });
 
-        gsap.from(".play-button", {
-            duration: 1,
-            scale: 0.5,
-            opacity: 0,
-            ease: "elastic.out(1, 0.3)",
-            delay: 1
+        img.addEventListener("mouseleave", () => {
+        img.src = "{{ url_for('static', filename='images/fb_game_icon3.png') }}"; // revert back
         });
 
-        gsap.from(".leaderboard-button", {
-            duration: 1,
-            scale: 0.5,
-            opacity: 0,
-            ease: "elastic.out(1, 0.3)",
-            delay: 1.2
+        const ss_img = document.getElementById("ss_img");
+
+        ss_img.addEventListener("mouseenter", () => {
+        ss_img.src = "{{ url_for('static', filename='images/simon_says_transition.gif') }}"+ "?t=" + new Date().getTime(); // image to show on hover
         });
 
-        gsap.from(".simonsays-button", {
-            duration: 1,
-            scale: 0.5,
-            opacity: 0,
-            ease: "elastic.out(1, 0.3)",
-            delay: 1.4
+        ss_img.addEventListener("mouseleave", () => {
+        ss_img.src = "{{ url_for('static', filename='images/simonsays_still.png') }}"; // revert back
         });
 
-      
-        gsap.to("button", {
-            scale: 1.05,
-            duration: 0.5,
-            yoyo: true,
-            repeat: -1,
-            ease: "sine.inOut",
-            stagger: 0.1
-        });
     </script>
+
+    <div class = "btns">
+        <form action="/getname">
+            <button type="submit" class="play-button">Back</button>
+        </form>
+        <form action="/">
+            <button type="submit" class="leaderboard-button">Quit</button>
+        </form>
+    </div>
+
+    
 </body>
 </html>
