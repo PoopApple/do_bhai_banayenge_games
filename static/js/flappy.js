@@ -7,6 +7,9 @@ let dieSound = new Audio('sounds effect/die.mp3');
 let birdBoundingRect = birdElement.getBoundingClientRect(); // position dega 
 
 
+birdImage.src = imagePath;
+
+
 let backgroundBoundingRect = document.querySelector('.background').getBoundingClientRect(); // backgorund ko bhi position de dega 
 
 let scoreDisplay = document.querySelector('.score_val');
@@ -53,10 +56,11 @@ function startGame() {
                     birdBoundingRect.top + birdBoundingRect.height > pipeRect.top
                 ) {
                     gameStatus = 'End';
-                    messageDisplay.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Restart';
-                    messageDisplay.classList.add('messageStyle');
-                    birdImage.style.display = 'none';
                     dieSound.play();
+                    birdImage.style.display = 'none';
+                    document.getElementById("hidden_score_val").value = scoreDisplay.innerHTML;
+                    document.getElementById("gameoverform").submit();
+
                     return;
                 } else {
                     if (pipeRect.right < birdBoundingRect.left && pipeRect.right + birdSpeed >= birdBoundingRect.left && pipeElement.increase_score === '1') {
@@ -79,14 +83,14 @@ function startGame() {
         
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowUp' || e.key === ' ') {
-                birdImage.src = 'images/fapy.png';
+                birdImage.src = imagePath;
                 birdVerticalSpeed = -7.6;
             }
         });
 
         document.addEventListener('keyup', (e) => {
             if (e.key === 'ArrowUp' || e.key === ' ') {
-                birdImage.src = 'images/fapy.png';
+                birdImage.src = imagePath;
             }
         });
 

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Flask Test</title>
+    <title>Toli Toli Games</title>
 </head>
 <body>
-    <h1>Hello from Flask!</h1>
+    <h1>Hello from blha blah!</h1>
 
     <h1>Enter Your Name</h1>
-    <form action="/submit" method="POST">
-        <input type="text" name="name" placeholder="Your name here" required>
-        <button type="submit">Submit</button>
+    <form action="/mainmenu" method="POST">
+        <input type="text" name="name" placeholder="Your name here" {%if name%} 
+            value = {{name}}{%endif%} required>
+        
+        <button type="submit">Go To Game Menu</button>
     </form>
-    <form action="/leaderboard">
-        <button type="submit">Leaderboard</button>
-    </form>
+
+    <h2>aur cheeze apne baare mex</h2>
+    
 </body>
 
 </html>

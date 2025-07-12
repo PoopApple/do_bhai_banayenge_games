@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script>
+        //to process image in js
+        const imagePath = "{{ url_for('static', filename='images/fapy.png') }}";
+    </script>
 </head>
 <body>
     <!DOCTYPE html>
@@ -12,14 +17,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/favicon.ico"/>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+    
     <title>Flappy Bird Game</title>
-    <link rel="stylesheet" href="flappy.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flappy.css') }}">
 </head>
 <body>
     <div class="background"></div>
-    <img src="images/fapy.png" alt="bird-img" class="bird" id="bird-1">
+    <img src="{{ url_for('static', filename='images/fapy.png') }}" alt="Flappy" class="bird" id="bird-1">
     <div class="message">
         Enter To Start Game <p><span style="color: red;">&uarr;</span> ArrowUp to Control</p>
     </div>
@@ -27,8 +32,13 @@
         <span class="score_title"></span>
         <span class="score_val"></span>
     </div>
+
+    <form action="/flappygameover" method="POST" id = "gameoverform">
+        <input type="hidden" id = "hidden_score_val" value = '0' name ='hidden_score_val'  required>
+        
+    </form>
+
+    <script src="{{ url_for('static', filename='js/flappy.js') }}"></script>
 </body>
 </html>
-    <script src="flappy.js"></script>
-</body>
-</html>
+    
