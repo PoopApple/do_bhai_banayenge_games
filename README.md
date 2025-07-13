@@ -95,10 +95,18 @@ do_bhai_banayenge_games/
 │   ├── js/
 │   └── images/
 ├── templates/
-│   ├── index.html
-│   ├── mainmenu.html
 │   ├── flappy.html
+│   ├── flappy_leaderboard.html
+│   ├── flappygameover.html
 │   ├── flappyintro.html
+│   ├── form.html
+│   ├── getname.html
+│   ├── index.html
+│   ├── mainmenu copy.html
+│   ├── mainmenu.html
+│   ├── simonintro.html
+│   ├── simonsays_gameover.html
+│   ├── simonsays_leaderboard.html
 │   └── simonsays.html
 ├── main_flask.py
 ├── requirements.txt
