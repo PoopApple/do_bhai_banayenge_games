@@ -17,6 +17,19 @@
 
 ---
 
+## 🎬 Demo Video
+
+▶️ Watch our live walkthrough on YouTube:
+
+<p align="center">
+  <a href="https://youtu.be/NgmkqMpiibw?si=w72PpVmBGmhFX3CF" target="_blank">
+    <img src="https://img.youtube.com/vi/NgmkqMpiibw/0.jpg" alt="Watch Demo Video" width="60%" />
+  </a>
+</p>
+
+
+
+
 ## 🕹️ Overview
 
 **PriSet.io** is a vibrant retro gaming website built using modern frontend and backend technologies. The platform features playable versions of **Flappy Bird** and **Simon Says**, wrapped in a visually engaging, animated UI using **GSAP** and **Framer Motion**.
