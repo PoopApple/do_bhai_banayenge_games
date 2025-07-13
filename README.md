@@ -68,8 +68,8 @@ Clone and run the project locally:
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/yourusername/priset-io.git
-cd priset-io
+git clone https://github.com/PoopApple/do_bhai_banayenge_games
+cd do_bhai_banayenge_games
 
 # 2. Setup virtual environment
 python -m venv venv
@@ -79,7 +79,7 @@ source venv/bin/activate  # For Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # 4. Start the Flask server
-python main-flask.py
+python main_flask.py
 
 # 5. Open in browser
 Visit http://localhost:5000
@@ -89,16 +89,18 @@ run main_flask.py in python-3.12 or above
 
 pip install -r requirements.txt
 
-priset-io/
+do_bhai_banayenge_games/
 ├── static/
 │   ├── css/
 │   ├── js/
 │   └── images/
 ├── templates/
 │   ├── index.html
+│   ├── mainmenu.html
+│   ├── flappy.html
 │   ├── flappyintro.html
 │   └── simonsays.html
-├── app.py
+├── main_flask.py
 ├── requirements.txt
 └── README.md
 
